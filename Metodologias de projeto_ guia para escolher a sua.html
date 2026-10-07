@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Metodologias de projeto: guia para escolher a sua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6F9;--surface:#FFFFFF;--ink:#1C2733;--muted:#53606E;--line:#D6DCE4;
+  --pmbok:#1F4E8C;--agile:#7A3E9D;--scrum:#0F7B6C;--kanban:#B5651D;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#12181F;--surface:#1A222B;--ink:#E7ECF2;--muted:#9AA7B5;--line:#2C3743;--pmbok:#7FB0EE;--agile:#C79BE3;--scrum:#4FC9B6;--kanban:#E9A25F}
+}
+:root[data-theme="dark"]{--bg:#12181F;--surface:#1A222B;--ink:#E7ECF2;--muted:#9AA7B5;--line:#2C3743;--pmbok:#7FB0EE;--agile:#C79BE3;--scrum:#4FC9B6;--kanban:#E9A25F}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Literata",Georgia,serif}
+h1,h2,h3,nav,table,.tag{font-family:"IBM Plex Sans",system-ui,sans-serif}
+header{max-width:760px;margin:0 auto;padding:56px 20px 24px}
+h1{font-size:clamp(2rem,5vw,2.8rem);line-height:1.15;margin:0 0 16px;font-family:"Literata",Georgia,serif;font-weight:700}
+.lead{color:var(--muted);margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 20px;display:flex;gap:8px;overflow-x:auto}
+nav a{flex:none;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:500;background:var(--surface)}
+nav a:hover,nav a:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+main{max-width:760px;margin:0 auto;padding:8px 20px 80px}
+section{margin-top:56px}
+h2{font-size:1.7rem;line-height:1.25;margin:0 0 6px;font-weight:600}
+h3{font-size:1.05rem;margin:28px 0 6px;font-weight:600}
+p{margin:0 0 14px}
+ul{margin:0 0 14px;padding-left:22px}li{margin-bottom:6px}
+.m{border-left:6px solid var(--c);padding-left:20px}
+.m h2{color:var(--c)}
+.tag{display:inline-block;font-size:.85rem;font-weight:500;color:var(--c);border:1px solid var(--c);border-radius:6px;padding:2px 10px;margin-bottom:14px}
+#pmbok{--c:var(--pmbok)}#agile{--c:var(--agile)}#scrum{--c:var(--scrum)}#kanban{--c:var(--kanban)}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:16px 0}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:620px){.pc{grid-template-columns:1fr}}
+.wrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem;line-height:1.45;background:var(--surface)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+footer{max-width:760px;margin:0 auto;padding:0 20px 56px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+<h1>Metodologias de projeto: guia para escolher a sua</h1>
+<p class="lead">PMBOK, Agile, Scrum e Kanban explicados com origem, funcionamento, pontos fortes, limites e o tipo de projeto em que cada um se encaixa. No fim há uma tabela comparativa e um roteiro de decisão para o seu grupo.</p>
+</header>
+<nav aria-label="Seções">
+<a href="#base">Antes de tudo</a><a href="#pmbok">PMBOK</a><a href="#agile">Agile</a><a href="#scrum">Scrum</a><a href="#kanban">Kanban</a><a href="#comparar">Comparação</a><a href="#decidir">Como decidir</a>
+</nav>
+<main>
+
+<section id="base">
+<h2>Antes de tudo: não são a mesma coisa</h2>
+<p>Os quatro nomes ficam em níveis diferentes, e confundi-los é o erro mais comum na apresentação.</p>
+<ul>
+<li><strong>PMBOK</strong> é um guia de conhecimento sobre gerenciamento de projetos, publicado pelo PMI.</li>
+<li><strong>Agile</strong> é uma filosofia, um conjunto de valores e princípios.</li>
+<li><strong>Scrum</strong> é um framework que coloca o Agile em prática, com papéis, eventos e regras.</li>
+<li><strong>Kanban</strong> é um método de gestão visual do fluxo de trabalho, também alinhado ao Agile.</li>
+</ul>
+<p>Na prática, o grupo escolhe uma abordagem de planejamento (preditiva, como o PMBOK, ou ágil) e, se for ágil, uma forma de operar (Scrum, Kanban ou os dois combinados).</p>
+</section>
+
+<section id="pmbok" class="m">
+<h2>PMBOK</h2>
+<span class="tag">Guia de boas práticas, abordagem preditiva</span>
+<h3>O que é</h3>
+<p>O <em>Project Management Body of Knowledge</em> é o guia do PMI (Project Management Institute), organização que também emite a certificação PMP. Ele reúne práticas, termos e processos reconhecidos para gerenciar qualquer tipo de projeto. As edições mais recentes enfatizam princípios e domínios de desempenho e reconhecem que o projeto pode ser conduzido de forma preditiva, ágil ou híbrida.</p>
+<h3>Como funciona</h3>
+<p>O ciclo clássico passa por cinco grupos de processos:</p>
+<ul>
+<li><strong>Iniciação:</strong> justificar o projeto e autorizar o início (termo de abertura, partes interessadas).</li>
+<li><strong>Planejamento:</strong> definir escopo, cronograma, custos, riscos e comunicação.</li>
+<li><strong>Execução:</strong> realizar o trabalho planejado com a equipe.</li>
+<li><strong>Monitoramento e controle:</strong> comparar o real com o planejado e corrigir desvios.</li>
+<li><strong>Encerramento:</strong> entregar, formalizar a aceitação e registrar lições aprendidas.</li>
+</ul>
+<p>Esses processos se cruzam com dez áreas de conhecimento: integração, escopo, cronograma, custos, qualidade, recursos, comunicações, riscos, aquisições e partes interessadas.</p>
+<h3>Documentos que você produziria</h3>
+<ul>
+<li>Termo de abertura do projeto (TAP)</li>
+<li>EAP, a estrutura analítica do projeto, que decompõe a entrega em partes menores</li>
+<li>Cronograma, por exemplo em gráfico de Gantt</li>
+<li>Matriz de riscos e plano de comunicação</li>
+<li>Registro de lições aprendidas</li>
+</ul>
+<div class="pc">
+<div class="box"><strong>Pontos fortes</strong>
+<ul><li>Visão completa de prazo, custo e risco</li><li>Muita documentação para mostrar na apresentação</li><li>Vocabulário padrão de mercado</li></ul></div>
+<div class="box"><strong>Limites</strong>
+<ul><li>Mudanças no meio do caminho são custosas</li><li>Planejar tudo antes exige conhecer bem o escopo</li><li>Risco de virar burocracia em projeto pequeno</li></ul></div>
+</div>
+<h3>Quando escolher</h3>
+<p>Escopo fechado, prazo definido e entrega única: um evento escolar, uma campanha de conscientização, uma feira. Também serve quando o grupo quer mostrar domínio de planejamento formal.</p>
+</section>
+
+<section id="agile" class="m">
+<h2>Agile</h2>
+<span class="tag">Filosofia, valores e princípios</span>
+<h3>O que é</h3>
+<p>O Agile nasceu em 2001, quando 17 profissionais de software redigiram o <em>Manifesto Ágil</em> como reação a projetos longos, burocráticos e que entregavam algo diferente do que o cliente precisava no fim. Não é um método com passos obrigatórios, e sim uma forma de pensar.</p>
+<h3>Os quatro valores</h3>
+<ul>
+<li>Indivíduos e interações mais que processos e ferramentas</li>
+<li>Software em funcionamento mais que documentação abrangente</li>
+<li>Colaboração com o cliente mais que negociação de contratos</li>
+<li>Responder a mudanças mais que seguir um plano</li>
+</ul>
+<p>O manifesto reconhece valor nos itens da direita, mas dá mais peso aos da esquerda. Ele também tem 12 princípios, entre eles entregar valor cedo e com frequência, aceitar mudanças de requisito, manter o ritmo sustentável e refletir regularmente sobre como melhorar.</p>
+<h3>Como se aplica</h3>
+<p>Por ser filosofia, o Agile se materializa em métodos: Scrum, Kanban, XP (<em>Extreme Programming</em>) e Lean. O traço comum é trabalhar em ciclos curtos, entregar partes funcionando, ouvir feedback e ajustar a rota.</p>
+<div class="pc">
+<div class="box"><strong>Pontos fortes</strong>
+<ul><li>Lida bem com requisitos que mudam</li><li>Feedback cedo reduz retrabalho</li><li>Valoriza a colaboração do time</li></ul></div>
+<div class="box"><strong>Limites</strong>
+<ul><li>Sozinho é abstrato; precisa de um método para aplicar</li><li>Exige disciplina e comunicação frequente</li><li>Mal aplicado, vira "sem planejamento"</li></ul></div>
+</div>
+<h3>Quando escolher</h3>
+<p>Na apresentação, trate o Agile como a base conceitual e escolha Scrum ou Kanban como método. Dizer apenas "usamos Agile" é pouco específico.</p>
+</section>
+
+<section id="scrum" class="m">
+<h2>Scrum</h2>
+<span class="tag">Framework ágil, ciclos de sprint</span>
+<h3>O que é</h3>
+<p>Criado nos anos 1990 por Ken Schwaber e Jeff Sutherland e descrito no <em>Scrum Guide</em>, é o framework ágil mais usado. O trabalho é dividido em <strong>Sprints</strong>, ciclos de no máximo um mês (equipes pequenas costumam usar uma ou duas semanas) que terminam com um incremento utilizável do produto.</p>
+<h3>Papéis</h3>
+<ul>
+<li><strong>Product Owner:</strong> responsável pelo valor do produto e pela ordem do Product Backlog. No seu grupo, é quem decide o que entra primeiro.</li>
+<li><strong>Scrum Master:</strong> garante que o Scrum seja entendido e seguido e remove impedimentos. Não é um chefe.</li>
+<li><strong>Developers:</strong> quem constrói o incremento. Todo o resto do grupo cai aqui.</li>
+</ul>
+<h3>Artefatos</h3>
+<ul>
+<li><strong>Product Backlog:</strong> lista ordenada de tudo o que o produto pode precisar, com o objetivo do produto (<em>Product Goal</em>).</li>
+<li><strong>Sprint Backlog:</strong> itens escolhidos para a sprint, mais o objetivo da sprint (<em>Sprint Goal</em>).</li>
+<li><strong>Incremento:</strong> o que ficou pronto, conforme a Definição de Pronto (<em>Definition of Done</em>).</li>
+</ul>
+<h3>Eventos</h3>
+<ul>
+<li><strong>Sprint Planning:</strong> o que será feito e como.</li>
+<li><strong>Daily Scrum:</strong> alinhamento de até 15 minutos por dia.</li>
+<li><strong>Sprint Review:</strong> demonstração do incremento e coleta de feedback.</li>
+<li><strong>Sprint Retrospective:</strong> o que melhorar no jeito de trabalhar.</li>
+</ul>
+<div class="pc">
+<div class="box"><strong>Pontos fortes</strong>
+<ul><li>Estrutura clara de papéis e rotina</li><li>Entregas frequentes e visíveis</li><li>Muito material para mostrar: backlog, sprints, retrospectivas</li></ul></div>
+<div class="box"><strong>Limites</strong>
+<ul><li>Pede reuniões regulares; difícil se o grupo não tem horários em comum</li><li>Mais regras para aprender que o Kanban</li><li>Funciona melhor com 3 a 9 pessoas</li></ul></div>
+</div>
+<h3>Quando escolher</h3>
+<p>Projetos de software (app, site, sistema), com escopo que pode mudar, e grupos que conseguem se encontrar toda semana. Em um prazo de poucas semanas, planeje duas ou três sprints curtas.</p>
+</section>
+
+<section id="kanban" class="m">
+<h2>Kanban</h2>
+<span class="tag">Método visual de fluxo contínuo</span>
+<h3>O que é</h3>
+<p>A palavra vem do japonês e significa algo como "cartão visual". O sistema surgiu na Toyota, ligado ao Sistema Toyota de Produção, e foi adaptado ao trabalho de conhecimento e software por David J. Anderson nos anos 2000. Em vez de ciclos fixos, o trabalho flui continuamente por um quadro.</p>
+<h3>Como funciona</h3>
+<ul>
+<li><strong>Quadro com colunas:</strong> o mínimo é A fazer, Em andamento e Concluído. Você pode criar colunas como Em revisão ou Em teste.</li>
+<li><strong>Cartões:</strong> cada tarefa é um cartão que se move da esquerda para a direita.</li>
+<li><strong>Limite de trabalho em andamento (WIP):</strong> a coluna "Em andamento" aceita, por exemplo, no máximo 3 cartões. Isso evita começar tudo e terminar nada.</li>
+<li><strong>Métricas de fluxo:</strong> <em>lead time</em> (da solicitação à entrega), <em>cycle time</em> (do início à entrega) e <em>throughput</em> (quantas tarefas terminam por período).</li>
+</ul>
+<p>Os princípios do método incluem visualizar o trabalho, limitar o WIP, gerenciar o fluxo, tornar as regras explícitas e melhorar de forma colaborativa e contínua.</p>
+<div class="pc">
+<div class="box"><strong>Pontos fortes</strong>
+<ul><li>Muito simples de começar (um quadro no Trello já basta)</li><li>Sem reuniões obrigatórias nem papéis fixos</li><li>Gargalos ficam visíveis</li></ul></div>
+<div class="box"><strong>Limites</strong>
+<ul><li>Sem prazos de ciclo, é fácil perder o ritmo</li><li>Menos estrutura para guiar um grupo iniciante</li><li>Não define um planejamento de longo prazo</li></ul></div>
+</div>
+<h3>Quando escolher</h3>
+<p>Grupos com horários difíceis de alinhar, projetos com tarefas independentes (conteúdo, pesquisa, design, campanhas) ou quando o grupo quer algo leve. Dá para combinar com Scrum, prática chamada informalmente de Scrumban.</p>
+</section>
+
+<section id="comparar">
+<h2>Comparação lado a lado</h2>
+<div class="wrap">
+<table>
+<thead><tr><th></th><th>PMBOK</th><th>Agile</th><th>Scrum</th><th>Kanban</th></tr></thead>
+<tbody>
+<tr><th>Natureza</th><td>Guia de boas práticas</td><td>Filosofia</td><td>Framework</td><td>Método</td></tr>
+<tr><th>Origem</th><td>PMI, engenharia e gestão</td><td>Manifesto, 2001</td><td>Anos 1990</td><td>Toyota, depois software</td></tr>
+<tr><th>Planejamento</th><td>Completo, no início</td><td>Adaptativo</td><td>Por sprint</td><td>Contínuo</td></tr>
+<tr><th>Ritmo</th><td>Fases sequenciais</td><td>Ciclos curtos</td><td>Sprints fixas</td><td>Fluxo sem ciclos</td></tr>
+<tr><th>Mudanças</th><td>Controladas e formais</td><td>Bem-vindas</td><td>Entre sprints</td><td>A qualquer momento</td></tr>
+<tr><th>Papéis</th><td>Gerente, patrocinador, equipe</td><td>Não define</td><td>PO, SM, Developers</td><td>Não define</td></tr>
+<tr><th>Reuniões</th><td>Conforme o plano de comunicação</td><td>Não define</td><td>5 eventos fixos</td><td>Opcionais</td></tr>
+<tr><th>Dificuldade</th><td>Alta</td><td>Média (conceito)</td><td>Média</td><td>Baixa</td></tr>
+<tr><th>Melhor para</th><td>Escopo fechado, prazo fixo</td><td>Base conceitual</td><td>Software e produtos</td><td>Fluxo de tarefas variadas</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="decidir">
+<h2>Como decidir</h2>
+<p>Responda estas perguntas com o grupo:</p>
+<ul>
+<li><strong>O resultado final está bem definido desde o começo?</strong> Se sim, o PMBOK faz sentido. Se ele vai se descobrindo pelo caminho, vá de Agile.</li>
+<li><strong>Vocês conseguem se reunir todo ou quase todo dia (ou algumas vezes na semana)?</strong> Se sim, o Scrum funciona. Se não, o Kanban é mais seguro.</li>
+<li><strong>O projeto é de software?</strong> Scrum e Kanban são naturais. Em projetos de outras áreas, o Kanban e o PMBOK costumam se adaptar melhor.</li>
+<li><strong>Quanto tempo de projeto vocês têm?</strong> Poucas semanas favorecem Kanban ou Scrum com sprints curtas. Um prazo maior e formal favorece o PMBOK.</li>
+<li><strong>O que o grupo quer mostrar na apresentação?</strong> Planejamento formal (PMBOK), rotina e papéis (Scrum) ou fluxo visual (Kanban).</li>
+</ul>
+<div class="box">
+<p><strong>Resumo de atalho</strong></p>
+<ul>
+<li>Projeto de app, site ou sistema, com grupo que se encontra toda semana: <strong>Scrum</strong>.</li>
+<li>Grupo com agenda difícil ou tarefas independentes: <strong>Kanban</strong>.</li>
+<li>Evento, campanha ou entrega única com prazo e escopo fixos: <strong>PMBOK</strong>.</li>
+<li>Em qualquer caso, cite o <strong>Agile</strong> como filosofia quando usar Scrum ou Kanban.</li>
+</ul>
+</div>
+<h3>O que mostrar na apresentação</h3>
+<p>Seja qual for a escolha, a turma vai querer ver como a metodologia foi aplicada de verdade. Leve evidências: o quadro Kanban com cartões movidos, o backlog e as sprints com o que foi entregue em cada uma, ou a EAP, o cronograma e a matriz de riscos. Feche com o que funcionou, o que não funcionou e o que o grupo mudaria na próxima vez.</p>
+</section>
+
+</main>
+<footer>As descrições são resumos didáticos. Para citar na apresentação, consulte as fontes oficiais: Guia PMBOK (PMI), Manifesto Ágil (agilemanifesto.org) e Scrum Guide (scrumguides.org).</footer>
+</body>
+</html>
